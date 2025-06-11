@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 const ContactList = lazy(() => import("./components/ContactList/ContactList"));
 const ContactForm = lazy(() => import("./components/ContactForm/ContactForm"));
 const SearchBox = lazy(() => import("./components/SearchBox/SearchBox"));
-import { fetchContacts } from "./redux/contactsOps";
+import { fetchContacts } from "./redux/contacts/operations";
 
 export default function App() {
   const dispatch = useDispatch();
