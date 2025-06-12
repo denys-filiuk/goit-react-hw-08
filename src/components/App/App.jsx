@@ -1,14 +1,16 @@
 import "./App.css";
 import { Toaster } from "react-hot-toast";
-import { lazy, Suspense, useEffect } from "react";
+import { Suspense, useEffect } from "react";
 import { useDispatch } from "react-redux";
-// const ContactList = lazy(() => import("../ContactList/ContactList"));
-// const ContactForm = lazy(() => import("../ContactForm/ContactForm"));
-// const SearchBox = lazy(() => import("../SearchBox/SearchBox"));
 import { fetchContacts } from "../../redux/contacts/operations";
 import { Route, Routes } from "react-router-dom";
 import HomePage from "../../pages/HomePage/HomePage";
-import AppBar from "../../components/AppBar/AppBar";
+import RegisterPage from "../../pages/RegisterPage/RegisterPage";
+import LoginPage from "../../pages/LoginPage/LoginPage";
+import ContactsPage from "../../pages/ContactsPage/ContactsPage";
+import { AppBar } from "../../components/AppBar/AppBar";
+import { RestrictedRoute } from "../RestrictedRoute";
+import { PrivateRoute } from "../PrivateRoute";
 
 export default function App() {
   const dispatch = useDispatch();
@@ -22,6 +24,8 @@ export default function App() {
       <AppBar />
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
+          <Route path="/" element={<HomePage />} />
+
           <Route
             path="/register"
             element={
@@ -30,6 +34,7 @@ export default function App() {
               </RestrictedRoute>
             }
           />
+
           <Route
             path="/login"
             element={
@@ -38,6 +43,7 @@ export default function App() {
               </RestrictedRoute>
             }
           />
+
           <Route
             path="/contacts"
             element={
@@ -52,8 +58,3 @@ export default function App() {
     </>
   );
 }
-
-// / - маршрут домашньої сторінки додатка, де можна розмістити інформацію про додаток чи його розробника. Рендерить компонент HomePage.
-// /register - публічний маршрут для реєстрації нового користувача, на якому рендериться компонент сторінки RegistrationPage з формою RegistrationForm.
-// /login - публічний маршрут для логіна існуючого користувача, на якому рендериться компонент сторінки LoginPage з формою LoginForm.
-// /contacts - приватний маршрут для роботи зі списком контактів користувача, на якому рендериться компонент сторінки ContactsPage.

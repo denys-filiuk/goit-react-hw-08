@@ -1,14 +1,71 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { toast } from "react-hot-toast";
 
-export const register = createAsyncThunk("auth/register", async () => {});
-export const logIn = createAsyncThunk("auth/login", async () => {});
-export const logOut = createAsyncThunk("auth/logout", async () => {});
-export const refreshUser = createAsyncThunk("auth/refresh", async () => {});
+axios.defaults.baseURL = "https://connections-api.goit.global";
 
-// Додайте у файл redux/auth/operations.js операції, оголошені за допомогою createAsyncThunk, для роботи з користувачем:
+const setAuthHeader = (token) => {
+  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+};
 
-//     register - для реєстрації нового користувача. Базовий тип екшену "auth/register". Використовується у компоненті RegistrationForm на сторінці реєстрації.
-//     login - для логіну існуючого користувача. Базовий тип екшену "auth/login". Використовується у компоненті LoginForm на сторінці логіну.
-//     logout - для виходу з додатка. Базовий тип екшену "auth/logout". Використовується у компоненті UserMenu у шапці додатку.
-//     refreshUser - оновлення користувача за токеном. Базовий тип екшену "auth/refresh". Використовується у компоненті App під час його монтування.
+const clearAuthHeader = () => {
+  delete axios.defaults.headers.common.Authorization;
+};
+
+export const register = createAsyncThunk(
+  "auth/register",
+  async (credentials, thunkAPI) => {
+    try {
+      const res = await axios.post("/users/signup", credentials);
+      setAuthHeader(res.data.token);
+      return res.data;
+    } catch (error) {
+      toast.error("Registration failed");
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const logIn = createAsyncThunk(
+  "auth/login",
+  async (credentials, thunkAPI) => {
+    try {
+      const res = await axios.post("/users/login", credentials);
+      setAuthHeader(res.data.token);
+      return res.data;
+    } catch (error) {
+      toast.error("Login failed");
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const logOut = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
+  try {
+    await axios.post("/users/logout");
+    clearAuthHeader();
+  } catch (error) {
+    toast.error("Logout failed");
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});
+
+export const refreshUser = createAsyncThunk(
+  "auth/refresh",
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistedToken = state.auth.token;
+
+    if (!persistedToken) {
+      return thunkAPI.rejectWithValue("Unable to fetch user: no token");
+    }
+
+    try {
+      setAuthHeader(persistedToken);
+      const res = await axios.get("/users/current");
+      return res.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

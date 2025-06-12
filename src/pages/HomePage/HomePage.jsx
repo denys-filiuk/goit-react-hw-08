@@ -2,7 +2,7 @@ export default function HomePage() {
   return (
     <>
       <title>Welcome</title>
-      <h1>Your Personal Contact Manager</h1>;
+      <h1>Your Personal Contact Manager</h1>
     </>
   );
 }
