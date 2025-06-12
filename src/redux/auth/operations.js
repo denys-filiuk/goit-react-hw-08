@@ -2,8 +2,8 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const register = createAsyncThunk("auth/register", async () => {});
-export const login = createAsyncThunk("auth/login", async () => {});
-export const logout = createAsyncThunk("auth/logout", async () => {});
+export const logIn = createAsyncThunk("auth/login", async () => {});
+export const logOut = createAsyncThunk("auth/logout", async () => {});
 export const refreshUser = createAsyncThunk("auth/refresh", async () => {});
 
 // Додайте у файл redux/auth/operations.js операції, оголошені за допомогою createAsyncThunk, для роботи з користувачем:
