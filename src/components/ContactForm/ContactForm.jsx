@@ -4,7 +4,7 @@ import * as Yup from "yup";
 import { addContact } from "../../redux/contacts/operations";
 import { useDispatch } from "react-redux";
 
-export default function ContactForm() {
+export const ContactForm = () => {
   const dispatch = useDispatch();
   const handleSubmit = (values, actions) => {
     dispatch(addContact(values));
@@ -42,4 +42,4 @@ export default function ContactForm() {
       </Form>
     </Formik>
   );
-}
+};
