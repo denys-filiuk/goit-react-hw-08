@@ -1,0 +1,30 @@
+.formWrapper {
+  max-width: 400px;
+  margin: 3rem auto;
+  padding: 2rem 1.5rem;
+  background-color: rgba(255, 255, 255, 0.85);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+  color: #004d40;
+  font-size: 1.1rem;
+}
+
+.inputField {
+  margin-bottom: 1.5rem;
+  /* всі інші стилі інпутів будуть з глобальних */
+}
+
+.submitButton {
+  /* Головне — розмістити кнопку по центру */
+  align-self: center;
+  /* мінімальна ширина і висота вже у глобальних стилях */
+  /* якщо потрібно, можна додати додаткові відступи */
+  margin-top: 1rem;
+}

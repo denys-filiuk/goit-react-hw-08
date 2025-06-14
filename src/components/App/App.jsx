@@ -12,6 +12,8 @@ import { RegisterPage } from "../../pages/RegisterPage/RegisterPage";
 import { LoginPage } from "../../pages/LoginPage/LoginPage";
 import { ContactsPage } from "../../pages/ContactsPage/ContactsPage";
 
+import styles from "./App.module.css";
+
 export default function App() {
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectIsRefreshing);
@@ -21,9 +23,9 @@ export default function App() {
   }, [dispatch]);
 
   return isRefreshing ? (
-    <strong>Refreshing user...</strong>
+    <strong className={styles.loadingText}>Refreshing user...</strong>
   ) : (
-    <>
+    <div className={styles.appContainer}>
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route path="/" element={<Layout />}>
@@ -59,6 +61,6 @@ export default function App() {
         </Routes>
       </Suspense>
       <Toaster position="top-right" reverseOrder={false} />
-    </>
+    </div>
   );
 }

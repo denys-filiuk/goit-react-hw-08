@@ -1,11 +1,36 @@
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  min-width: 320px;
+  min-height: 100vh;
+  font-size: 26px;
+  padding: 24px;
+  box-sizing: border-box;
+  background: linear-gradient(135deg, #004d40, #00796b);
+  color: #b2dfdb;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#root,
+.app-container {
+  width: 100%;
+  max-width: 1200px;
+  box-sizing: border-box;
+  background-color: rgba(0, 77, 64, 0.8);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 0 15px 3px #00968877;
+}
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: #b2dfdb;
+  background-color: #004d40;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -24,65 +49,88 @@ ul {
 }
 
 a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+  font-weight: 600;
+  color: #4db6ac;
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  min-width: 320px;
-  min-height: 100vh;
-  font-size: 26px;
+  color: #80cbc4;
+  text-decoration: underline;
 }
 
 h1 {
-  font-size: 3.2em;
+  font-size: 3.4em;
   line-height: 1.1;
+  color: #80cbc4;
+  text-shadow: 1px 1px 3px #00332fbb;
+  margin-bottom: 24px;
 }
 
 button {
-  min-width: 150px;
-  height: 50px;
+  min-width: 160px;
+  height: 52px;
   margin: 0 auto;
-  border-radius: 8px;
-  border: 1px solid #213547;
-  padding: 0.6em 1.2em;
-  font-size: 0.8em;
-  font-weight: 500;
+  border-radius: 12px;
+  border: 2px solid #009688;
+  padding: 0 0.75em; /* зверни увагу, прибрав верхній/нижній паддінг */
+  font-size: 1em;
+  font-weight: 600;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #00796b;
+  color: #a7ffeb;
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: background-color 0.3s ease, border-color 0.3s ease,
+    color 0.3s ease;
+  box-shadow: 0 3px 8px #004d4088;
+
+  line-height: 52px; /* робить текст по центру по вертикалі */
 }
+
 button:hover {
-  border-color: #7e7e7e;
+  background-color: #009688;
+  border-color: #26a69a;
+  color: #004d40;
+  box-shadow: 0 5px 12px #26a69a88;
 }
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  outline: 4px auto #80cbc4;
 }
 
 input {
   height: 48px;
   font-size: 16px;
-  padding: 0 12px;
+  padding: 0 14px;
   box-sizing: border-box;
+  border-radius: 8px;
+  border: 1px solid #26a69a;
+  background-color: #b2dfdb;
+  color: #004d40;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+input:focus {
+  border-color: #80cbc4;
+  box-shadow: 0 0 8px #80cbc488;
+  outline: none;
 }
 
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    color: #004d40;
+    background-color: #e0f2f1;
   }
   a:hover {
-    color: #747bff;
+    color: #009688;
   }
   button {
-    background-color: #f9f9f9;
+    background-color: #4db6ac;
+    color: #00332f;
+    border-color: #26a69a;
+  }
+  button:hover {
+    background-color: #80cbc4;
+    border-color: #4db6ac;
+    color: #00201a;
   }
 }
