@@ -1,17 +1,28 @@
-import "./App.css";
-import { Toaster } from "react-hot-toast";
-import { Suspense } from "react";
+import { useEffect, Suspense } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
-import HomePage from "../../pages/HomePage/HomePage";
-import RegisterPage from "../../pages/RegisterPage/RegisterPage";
-import LoginPage from "../../pages/LoginPage/LoginPage";
-import ContactsPage from "../../pages/ContactsPage/ContactsPage";
-import Layout from "../../components/Layout/Layout"; // новий імпорт
+import { Toaster } from "react-hot-toast";
+import { refreshUser } from "../../redux/auth/operations";
+import { selectIsRefreshing } from "../../redux/auth/selectors";
 import { RestrictedRoute } from "../RestrictedRoute";
 import { PrivateRoute } from "../PrivateRoute";
+import { Layout } from "../Layout/Layout"; // шляхи можеш скоригувати
+import { HomePage } from "../../pages/HomePage/HomePage";
+import { RegisterPage } from "../../pages/RegisterPage/RegisterPage";
+import { LoginPage } from "../../pages/LoginPage/LoginPage";
+import { ContactsPage } from "../../pages/ContactsPage/ContactsPage";
 
 export default function App() {
-  return (
+  const dispatch = useDispatch();
+  const isRefreshing = useSelector(selectIsRefreshing);
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
+  return isRefreshing ? (
+    <strong>Refreshing user...</strong>
+  ) : (
     <>
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
