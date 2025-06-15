@@ -1,10 +1,9 @@
+import css from "./LoginForm.module.css";
 import { Formik, Form, Field } from "formik";
 import { useDispatch } from "react-redux";
 import { logIn } from "../../redux/auth/operations";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-
-import styles from "./LoginForm.module.css";
 
 export default function LoginForm() {
   const dispatch = useDispatch();
@@ -23,23 +22,23 @@ export default function LoginForm() {
 
   return (
     <Formik initialValues={{ email: "", password: "" }} onSubmit={handleSubmit}>
-      <Form className={styles.form}>
-        <label className={styles.label} htmlFor="email">
+      <Form className={css.form}>
+        <label className={css.label} htmlFor="email">
           Email
         </label>
-        <Field className={styles.input} id="email" type="email" name="email" />
+        <Field className={css.input} id="email" type="email" name="email" />
 
-        <label className={styles.label} htmlFor="password">
+        <label className={css.label} htmlFor="password">
           Password
         </label>
         <Field
-          className={styles.input}
+          className={css.input}
           id="password"
           type="password"
           name="password"
         />
 
-        <button className={styles.button} type="submit">
+        <button className={css.button} type="submit">
           Log in
         </button>
       </Form>

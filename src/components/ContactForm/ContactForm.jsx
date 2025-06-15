@@ -30,11 +30,15 @@ export default function ContactForm() {
       onSubmit={handleSubmit}
     >
       <Form className={css.form}>
-        <label htmlFor="name">Name</label>
+        <label htmlFor="name" className={css.label}>
+          Name
+        </label>
         <Field type="text" name="name" id="name" />
         <ErrorMessage name="name" component="div" className={css.error} />
 
-        <label htmlFor="number">Number</label>
+        <label htmlFor="number" className={css.label}>
+          Number
+        </label>
         <Field type="tel" name="number" id="number" />
         <ErrorMessage name="number" component="div" className={css.error} />
 

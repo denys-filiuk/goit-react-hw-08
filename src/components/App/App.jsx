@@ -1,3 +1,4 @@
+import css from "./App.module.css";
 import { useEffect, Suspense } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
@@ -12,8 +13,6 @@ import { RegisterPage } from "../../pages/RegisterPage/RegisterPage";
 import { LoginPage } from "../../pages/LoginPage/LoginPage";
 import { ContactsPage } from "../../pages/ContactsPage/ContactsPage";
 
-import styles from "./App.module.css";
-
 export default function App() {
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectIsRefreshing);
@@ -23,9 +22,9 @@ export default function App() {
   }, [dispatch]);
 
   return isRefreshing ? (
-    <strong className={styles.loadingText}>Refreshing user...</strong>
+    <strong className={css.loadingText}>Refreshing user...</strong>
   ) : (
-    <div className={styles.appContainer}>
+    <div className={css.appContainer}>
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route path="/" element={<Layout />}>

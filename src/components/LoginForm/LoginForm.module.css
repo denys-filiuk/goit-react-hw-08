@@ -18,11 +18,9 @@
 
 .input {
   margin-bottom: 1.5rem;
-  /* основні стилі інпутів — у глобальних стилях */
 }
 
 .button {
   align-self: center;
   margin-top: 1rem;
-  /* розміри, кольори, відступи і hover — у глобальних стилях */
 }

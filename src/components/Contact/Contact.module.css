@@ -1,4 +1,4 @@
-.contactContainer {
+/* .contactContainer {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -6,6 +6,38 @@
 
 .contactContainer > div {
   flex-grow: 1;
+}
+
+.svgSpan {
+  margin-right: 8px;
+} */
+.contactItem {
+  width: 380px;
+  padding: 1.25rem 1rem;
+  background-color: rgba(255, 255, 255, 0.85);
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.contactItem:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+}
+
+.contactText {
+  flex-grow: 1;
+  color: #004d40;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.contactActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .svgSpan {
