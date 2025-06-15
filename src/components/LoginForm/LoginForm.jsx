@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 import styles from "./LoginForm.module.css";
 
-export const LoginForm = () => {
+export default function LoginForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -45,4 +45,4 @@ export const LoginForm = () => {
       </Form>
     </Formik>
   );
-};
+}

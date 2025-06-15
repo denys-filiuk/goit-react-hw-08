@@ -6,7 +6,7 @@ import { refreshUser } from "../../redux/auth/operations";
 import { selectIsRefreshing } from "../../redux/auth/selectors";
 import { RestrictedRoute } from "../RestrictedRoute";
 import { PrivateRoute } from "../PrivateRoute";
-import { Layout } from "../Layout/Layout"; // шляхи можеш скоригувати
+import Layout from "../Layout/Layout";
 import { HomePage } from "../../pages/HomePage/HomePage";
 import { RegisterPage } from "../../pages/RegisterPage/RegisterPage";
 import { LoginPage } from "../../pages/LoginPage/LoginPage";

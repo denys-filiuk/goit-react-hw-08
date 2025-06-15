@@ -2,9 +2,9 @@ import { Formik, Form, Field } from "formik";
 import { useDispatch } from "react-redux";
 import { register } from "../../redux/auth/operations";
 import { toast } from "react-hot-toast";
-import styles from "./RegisterForm.module.css";
+import css from "./RegisterForm.module.css";
 
-export const RegisterForm = () => {
+export default function RegisterForm() {
   const dispatch = useDispatch();
 
   const handleSubmit = async (values, actions) => {
@@ -22,44 +22,44 @@ export const RegisterForm = () => {
       initialValues={{ email: "", password: "", name: "" }}
       onSubmit={handleSubmit}
     >
-      <Form className={styles.formWrapper}>
-        <label className={styles.label} htmlFor="name">
+      <Form className={css.formWrapper}>
+        <label className={css.label} htmlFor="name">
           Username
         </label>
         <Field
-          className={styles.inputField}
+          className={css.inputField}
           type="text"
           name="name"
           id="name"
           autoComplete="username"
         />
 
-        <label className={styles.label} htmlFor="email">
+        <label className={css.label} htmlFor="email">
           Email
         </label>
         <Field
-          className={styles.inputField}
+          className={css.inputField}
           type="email"
           name="email"
           id="email"
           autoComplete="email"
         />
 
-        <label className={styles.label} htmlFor="password">
+        <label className={css.label} htmlFor="password">
           Password
         </label>
         <Field
-          className={styles.inputField}
+          className={css.inputField}
           type="password"
           name="password"
           id="password"
           autoComplete="new-password"
         />
 
-        <button className={styles.submitButton} type="submit">
+        <button className={css.submitButton} type="submit">
           Register
         </button>
       </Form>
     </Formik>
   );
-};
+}
