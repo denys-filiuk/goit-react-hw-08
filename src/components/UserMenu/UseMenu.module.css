@@ -2,3 +2,8 @@
   display: flex;
   gap: 12px;
 }
+
+.text {
+  margin-top: 10px;
+  font-size: 18px;
+}

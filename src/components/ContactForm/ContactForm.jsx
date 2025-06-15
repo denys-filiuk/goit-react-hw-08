@@ -3,12 +3,20 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { addContact } from "../../redux/contacts/operations";
 import { useDispatch } from "react-redux";
+import { toast } from "react-hot-toast";
 
 export default function ContactForm() {
   const dispatch = useDispatch();
   const handleSubmit = (values, actions) => {
-    dispatch(addContact(values));
-    actions.resetForm();
+    dispatch(addContact(values))
+      .unwrap()
+      .then(() => {
+        toast.success("Contact added successfully!");
+        actions.resetForm();
+      })
+      .catch(() => {
+        toast.error("Failed to add contact.");
+      });
   };
 
   const ContactSchema = Yup.object().shape({
