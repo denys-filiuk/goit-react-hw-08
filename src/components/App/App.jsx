@@ -1,5 +1,5 @@
 import css from "./App.module.css";
-import { useEffect, Suspense } from "react";
+import { useEffect, Suspense, lazy } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
@@ -8,10 +8,15 @@ import { selectIsRefreshing } from "../../redux/auth/selectors";
 import { RestrictedRoute } from "../RestrictedRoute";
 import { PrivateRoute } from "../PrivateRoute";
 import Layout from "../Layout/Layout";
-import { HomePage } from "../../pages/HomePage/HomePage";
-import { RegisterPage } from "../../pages/RegisterPage/RegisterPage";
-import { LoginPage } from "../../pages/LoginPage/LoginPage";
-import { ContactsPage } from "../../pages/ContactsPage/ContactsPage";
+
+const HomePage = lazy(() => import("../../pages/HomePage/HomePage"));
+const RegisterPage = lazy(() =>
+  import("../../pages/RegisterPage/RegisterPage")
+);
+const LoginPage = lazy(() => import("../../pages/LoginPage/LoginPage"));
+const ContactsPage = lazy(() =>
+  import("../../pages/ContactsPage/ContactsPage")
+);
 
 export default function App() {
   const dispatch = useDispatch();

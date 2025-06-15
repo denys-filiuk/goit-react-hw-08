@@ -6,7 +6,7 @@ import ContactList from "../../components/ContactList/ContactList";
 import { fetchContacts } from "../../redux/contacts/operations";
 import { selectLoading } from "../../redux/contacts/selectors";
 
-export const ContactsPage = () => {
+export default function ContactsPage() {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectLoading);
 
@@ -23,4 +23,4 @@ export const ContactsPage = () => {
       <ContactList />
     </section>
   );
-};
+}
